@@ -21,6 +21,7 @@
 #include <linux/gpio/consumer.h>
 #include <linux/of.h>
 #include <linux/of_device.h>
+#include <linux/delay.h>
 
 struct parport_gpio_ctx {
 	struct gpio_descs *data;
@@ -36,6 +37,8 @@ static unsigned char parport_gpio_read_data(struct parport *p)
 	struct parport_gpio_ctx *ctx = p->private_data;
 	unsigned char data;
 	unsigned long flags;
+
+	udelay(1);
 
 	spin_lock_irqsave(&ctx->lock, flags);
 
@@ -82,6 +85,8 @@ static void parport_gpio_write_data(struct parport *p, unsigned char data)
 #endif
 
 	spin_unlock_irqrestore(&ctx->lock, flags);
+
+	udelay(1);
 }
 
 static unsigned char parport_gpio_read_control(struct parport *p)
@@ -89,6 +94,8 @@ static unsigned char parport_gpio_read_control(struct parport *p)
 	struct parport_gpio_ctx *ctx = p->private_data;
 	unsigned char control;
 	unsigned long flags;
+
+	udelay(1);
 
 	spin_lock_irqsave(&ctx->lock, flags);
 
@@ -127,6 +134,8 @@ static void parport_gpio_write_control(struct parport *p, unsigned char control)
 #endif
 
 	spin_unlock_irqrestore(&ctx->lock, flags);
+
+	udelay(1);
 }
 
 static unsigned char parport_gpio_frob_control(struct parport *p,
@@ -161,6 +170,8 @@ static unsigned char parport_gpio_read_status(struct parport *p)
 	struct parport_gpio_ctx *ctx = p->private_data;
 	unsigned char status;
 	unsigned long flags;
+
+	udelay(1);
 
 	spin_lock_irqsave(&ctx->lock, flags);
 
