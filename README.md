@@ -39,6 +39,9 @@ the parport driver stack.  If your application is a printer, go for it.
 
 ### Building the driver
 
+To simply install only drivers just execute `./install.sh` from root directory
+of this repository. It will install kernel modules and Device Tree Overlay.
+
 For convenience, the generic parport code is duplicated in this repo,
 since the Raspberry Pi Foundation does not ship the compiled modules
 in the `raspberrypi-kernel` package (at least in old Raspbian
