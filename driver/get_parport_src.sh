@@ -3,8 +3,8 @@
 # Note that we use a custom Makefile to build these files together.
 # mkdir parport/
 
-KSRC_VER=`dpkg -s raspberrypi-kernel | grep Version | cut -d' ' -f2`
-BRANCH=raspberrypi-kernel_$KSRC_VER
+KSRC_VER=`uname -r | cut -d. -f1,2`
+BRANCH=rpi-$KSRC_VER.y
 git clone --depth 1 --single-branch --branch $BRANCH --no-checkout \
   https://github.com/raspberrypi/linux.git
 cd linux
@@ -16,4 +16,5 @@ for FILE in lp.c ppdev.c; do
   git show $BRANCH:drivers/char/$FILE >../parport/$FILE
 done
 cd ..
-# rm -rf linux
+rm -rf linux
+
