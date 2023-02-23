@@ -1,6 +1,6 @@
 KERNEL_VERSION ?= $(shell uname -r)
 KERNEL_PATH ?= /lib/modules/$(KERNEL_VERSION)/build
-MODDIR=/lib/modules/`uname -r`
+MODDIR=/lib/modules/$(KERNEL_VERSION)
 
 ccflags-y = -DCONFIG_PARPORT_NOT_PC -DCONFIG_PARPORT_1284
 
