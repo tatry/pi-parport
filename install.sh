@@ -14,7 +14,7 @@ cp -R "$THIS_REPO/driver" /usr/src/pi-parport-1.0
 dkms install -m pi-parport -v 1.0
 
 # For some reason modules are not rebuild for new kernel, so force build
-cat <<EOF >> /etc/kernel/postinst.d/pi-parport
+cat <<EOF > /etc/kernel/postinst.d/pi-parport
 #!/bin/sh
 
 version="\$1"
