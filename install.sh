@@ -9,6 +9,9 @@ set -x
 
 THIS_REPO=`pwd`
 
+# Install dependencies, kernel headers you must install on your own
+apt install -y dkms build-essential
+
 # Install drivers via DKMS
 cp -R "$THIS_REPO/driver" /usr/src/pi-parport-1.0
 dkms install -m pi-parport -v 1.0
@@ -32,4 +35,3 @@ make install
 # force user space files
 echo "ppdev" >> /etc/modules
 echo "lp" >> /etc/modules
-
